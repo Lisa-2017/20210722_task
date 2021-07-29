@@ -1,0 +1,15 @@
+{
+  "name": "fed-e-task-01-01",
+  "version": "1.0.0",
+  "description": "打开 code / 简答题.md 文件,   根据其中题目答题并保存",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

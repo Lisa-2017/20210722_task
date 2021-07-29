@@ -13,3 +13,17 @@
   }, 10)
 */
 
+
+function printString ( str ) {
+  return new Promise( (resolve,reject) => {
+    setTimeout( () => {
+      resolve(str)
+    },10)
+  })
+}
+
+printString('hello').then( res => {
+  return printString(res + ' 蓝洛')
+} ).then( res => {
+  return printString(res +' I ♥ U')
+}).then(res=>console.log( res))
