@@ -180,15 +180,43 @@
 // } )
 
 
-// MyPromise_v7 测试  then方法的可选参数=============================================
-const MyPromise = require( './MyPromise_V7_then的可选参数' );
+// // MyPromise_v7 测试  then方法的可选参数=============================================
+// const MyPromise = require( './MyPromise_V7_then的可选参数' );
+// let promise = new MyPromise( (resolve,reject) => {
+// 	// resolve('成功')
+// 	reject('失败了')
+// } )
+
+// promise
+// 	.then()
+// 	.then()
+// 	.then( value => { console.log( `value`, value ) }, reason => { console.log(`reason`, reason)})
+
+
+
+// MyPromise 测试 promise.all方法
+const MyPromise = require( './MyPromise_V8_实现all方法' );
 let promise = new MyPromise( (resolve,reject) => {
-	// resolve('成功')
-	reject('失败了')
+	resolve(200)
 } )
 
-promise
-	.then()
-	.then()
-	.then( value => { console.log( `value`, value ) }, reason => { console.log(`reason`, reason)})
+const p1 = () => {
+	return new MyPromise( (resolve,reject) => {
+		setTimeout( () => {
+			resolve('p1')
+		},2000)
+	})
+}
+const p2 = () => {
+	return new MyPromise( (resolve,reject) => {
+		resolve('p2')
+		// throw new Error('只要有一个出错，满盘皆输')
+	})
+}
 
+MyPromise.all( [ 'a', 'b', p1(), p2(), 'c', 'd' ] )
+	.then( value=> {
+		console.log(`value`, value) //  [ 'a', 'b', 'p1', 'p2', 'c', 'd' ]
+	}, reason => { 
+		console.log(`reason`, reason.message)
+	})
