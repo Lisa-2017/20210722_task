@@ -160,24 +160,35 @@
 
 
 
-// MyPromise_V6_4 测试 异步错误捕获====================================
-const MyPromise = require( './MyPromise_V6' );
+// // MyPromise_V6_4 测试 异步错误捕获====================================
+// const MyPromise = require( './MyPromise_V6' );
+// let promise = new MyPromise( (resolve,reject) => {
+// 	setTimeout( () => {
+// 		resolve('测试异步的错误捕获--成功')
+// 	},2000)
+// } )
+
+// promise.then( value => {
+// 	console.log( `value1`, value )
+// 	return 'aaa--测试异步错误捕获'
+// }, reason => {
+// 	console.log(`reason1`, reason)
+// } ).then( value => {
+// 	console.log(`value2`, value)
+// }, reason => {
+// 	console.log(`reason2`, reason)
+// } )
+
+
+// MyPromise_v7 测试  then方法的可选参数=============================================
+const MyPromise = require( './MyPromise_V7_then的可选参数' );
 let promise = new MyPromise( (resolve,reject) => {
-	setTimeout( () => {
-		resolve('测试异步的错误捕获--成功')
-	},2000)
+	// resolve('成功')
+	reject('失败了')
 } )
 
-promise.then( value => {
-	console.log( `value1`, value )
-	return 'aaa--测试异步错误捕获'
-}, reason => {
-	console.log(`reason1`, reason)
-} ).then( value => {
-	console.log(`value2`, value)
-}, reason => {
-	console.log(`reason2`, reason)
-} )
-
-
+promise
+	.then()
+	.then()
+	.then( value => { console.log( `value`, value ) }, reason => { console.log(`reason`, reason)})
 
