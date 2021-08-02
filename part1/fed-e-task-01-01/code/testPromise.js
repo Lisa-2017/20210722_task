@@ -194,7 +194,7 @@
 
 
 
-// // MyPromise 测试 Promise.all方法
+// // MyPromise 测试 Promise.all方法=======================================
 // const MyPromise = require( './MyPromise_V8_实现all方法' );
 // let promise = new MyPromise( (resolve,reject) => {
 // 	resolve(200)
@@ -222,7 +222,7 @@
 // 	})
 
 
-// // MyPromise_V9 测试 Promise.resolve方法
+// // MyPromise_V9 测试 Promise.resolve方法==================================
 // const MyPromise = require( './MyPromise_V9_Promise.resolve方法' )
 // const p1 = () => {
 // 	return new MyPromise( (resolve,reject) => {
@@ -239,15 +239,29 @@
 // 	.then( value => console.log( `value`, value ) )
 
 
-// MyPromise_V10 测试 finally方法
-const MyPromise = require( './MyPromise_V10_实现finally方法' )
+
+
+// // MyPromise_V10 测试 finally方法=============================================
+// const MyPromise = require( './MyPromise_V10_实现finally方法' )
+// const p2 = () => {
+// 	return new MyPromise( (resolve,reject) => {
+// 		reject( 'p2--error' )
+// 		// resolve('p2')
+// 	})
+// }
+
+// p2().finally( () => {
+// 	console.log(`finally`)
+// } ).then( value => console.log(`value`, value), reason => console.log(`reason`, reason))
+
+
+// MyPromise_V11 测试 catch方法 ===============================================
+const MyPromise = require( './MyPromise_V11_ 实现catch方法' )
 const p2 = () => {
 	return new MyPromise( (resolve,reject) => {
-		reject( 'p2--error' )
 		// resolve('p2')
+		reject( 'p2--error' )
 	})
 }
 
-p2().finally( () => {
-	console.log(`finally`)
-} ).then( value => console.log(`value`, value), reason => console.log(`reason`, reason))
+p2().then(value=>console.log(`value`, value)).catch(error=>console.log(`error`, error))
