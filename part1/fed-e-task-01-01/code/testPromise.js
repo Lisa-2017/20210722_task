@@ -222,18 +222,32 @@
 // 	})
 
 
-// MyPromise_V9 测试 Promise.resolve方法
-const MyPromise = require( './MyPromise_V9_Promise.resolve方法' )
-const p1 = () => {
+// // MyPromise_V9 测试 Promise.resolve方法
+// const MyPromise = require( './MyPromise_V9_Promise.resolve方法' )
+// const p1 = () => {
+// 	return new MyPromise( (resolve,reject) => {
+// 		setTimeout( () => {
+// 			resolve('p1')
+// 		},2000)
+// 	})
+// }
+
+// MyPromise.resolve( '调用MyPromise.resolve试试' )
+// 	.then( value => console.log( value ) )
+
+// MyPromise.resolve( p1() )
+// 	.then( value => console.log( `value`, value ) )
+
+
+// MyPromise_V10 测试 finally方法
+const MyPromise = require( './MyPromise_V10_实现finally方法' )
+const p2 = () => {
 	return new MyPromise( (resolve,reject) => {
-		setTimeout( () => {
-			resolve('p1')
-		},2000)
+		reject( 'p2--error' )
+		// resolve('p2')
 	})
 }
 
-MyPromise.resolve( '调用MyPromise.resolve试试' )
-	.then( value => console.log( value ) )
-
-MyPromise.resolve( p1() )
-	.then( value => console.log( `value`, value ) )
+p2().finally( () => {
+	console.log(`finally`)
+} ).then( value => console.log(`value`, value), reason => console.log(`reason`, reason))
