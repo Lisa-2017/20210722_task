@@ -194,12 +194,36 @@
 
 
 
-// MyPromise 测试 promise.all方法
-const MyPromise = require( './MyPromise_V8_实现all方法' );
-let promise = new MyPromise( (resolve,reject) => {
-	resolve(200)
-} )
+// // MyPromise 测试 Promise.all方法
+// const MyPromise = require( './MyPromise_V8_实现all方法' );
+// let promise = new MyPromise( (resolve,reject) => {
+// 	resolve(200)
+// } )
 
+// const p1 = () => {
+// 	return new MyPromise( (resolve,reject) => {
+// 		setTimeout( () => {
+// 			resolve('p1')
+// 		},2000)
+// 	})
+// }
+// const p2 = () => {
+// 	return new MyPromise( (resolve,reject) => {
+// 		resolve('p2')
+// 		// throw new Error('只要有一个出错，满盘皆输')
+// 	})
+// }
+
+// MyPromise.all( [ 'a', 'b', p1(), p2(), 'c', 'd' ] )
+// 	.then( value=> {
+// 		console.log(`value`, value) //  [ 'a', 'b', 'p1', 'p2', 'c', 'd' ]
+// 	}, reason => { 
+// 		console.log(`reason`, reason.message)
+// 	})
+
+
+// MyPromise_V9 测试 Promise.resolve方法
+const MyPromise = require( './MyPromise_V9_Promise.resolve方法' )
 const p1 = () => {
 	return new MyPromise( (resolve,reject) => {
 		setTimeout( () => {
@@ -207,16 +231,9 @@ const p1 = () => {
 		},2000)
 	})
 }
-const p2 = () => {
-	return new MyPromise( (resolve,reject) => {
-		resolve('p2')
-		// throw new Error('只要有一个出错，满盘皆输')
-	})
-}
 
-MyPromise.all( [ 'a', 'b', p1(), p2(), 'c', 'd' ] )
-	.then( value=> {
-		console.log(`value`, value) //  [ 'a', 'b', 'p1', 'p2', 'c', 'd' ]
-	}, reason => { 
-		console.log(`reason`, reason.message)
-	})
+MyPromise.resolve( '调用MyPromise.resolve试试' )
+	.then( value => console.log( value ) )
+
+MyPromise.resolve( p1() )
+	.then( value => console.log( `value`, value ) )
