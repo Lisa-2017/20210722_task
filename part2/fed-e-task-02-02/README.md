@@ -1,58 +1,39 @@
 # 一、简答题
 
-#### 1、Webpack 的构建流程主要有哪些环节？如果可以请尽可能详尽的描述 Webpack 打包的整个过程。
 
-　
+#### 1、简述前端兼容性的解决方案及不同工具的使用(JS/CSS)
+css兼容:
+  不同浏览器的标签默认的margin和padding不同
+  css3新属性，加浏览器前缀兼容早期浏览器
+  块属性标签float后，又有横行的margin情况下，IE 浏览器margin加倍的问题
+  设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度
+  行内属性标签，设置display:block后采用float布局，又有横行的margin的情况，IE6间距bug
+  IE浏览器div最小宽度和高度的问题
+  超链接访问过后hover样式就不出现的问题
+  图片默认有间距
+  css hack解决浏览器兼容性
 
-　
+JS兼容:
+  事件绑定
+  event事件对象问题
+  event.srcElement(事件源对象)问题
+  获取元素的非行间样式值
+  阻止事件冒泡传播
+  阻止事件默认行为：
+   ajax兼容问题
 
-　
+#### 2.列举三种常见的wbepack打包优化手段及使用步骤
+按需加载、优化loader配置、关闭、生产环境sourceMap、CDN优化
 
-#### 2、Loader 和 Plugin 有哪些不同？请描述一下开发 Loader 和 Plugin 的思路。
-
-　
-
-　
-
-　
-
-# 二、编程题
-
-#### 1、使用 Webpack 实现 Vue 项目打包任务
-
-具体任务及说明：
-
-1. 在 code/vue-app-base 中安装、创建、编辑相关文件，进而完成作业。
-2. 这是一个使用 Vue CLI 创建出来的 Vue 项目基础结构
-3. 有所不同的是这里我移除掉了 vue-cli-service（包含 webpack 等工具的黑盒工具）
-4. 这里的要求就是直接使用 webpack 以及你所了解的周边工具、Loader、Plugin 还原这个项目的打包任务
-5. 尽可能的使用上所有你了解到的功能和特性
-
-
-
-**提示：(开始前必看)**
-
-在视频录制后，webpack 版本以迅雷不及掩耳的速度升级到 5，相应 webpack-cli、webpack-dev-server 都有改变。
-
-项目中使用服务器的配置应该是改为下面这样：
-
-```json
-// package.json 中部分代码
-"scripts": {
-	"serve": "webpack serve --config webpack.config.js"
-}
-```
-
-vue 文件中 使用 style-loader 即可
-
-**其它问题, 可先到 https://www.npmjs.com/ 上搜索查看相应包的最新版本的配置示例, 可以解决大部分问题.**
-
-
-
-#### 作业要求
-
-本次作业中的编程题要求大家完成相应代码后
-
-- 提交一个项目说明文档，要求思路流程清晰。
-- 或者简单录制一个小视频介绍一下实现思路，并演示一下相关功能。
-- 最终将录制的视频或说明文档和代码统一提交至作业仓库。
+使用步骤:
+ 下载和使用webpack
+ webpack 更新打包
+ webpack的配置
+ 插件-自动生成html文件
+ 加载器 - 处理css文件问题
+ 加载器 - 处理css文件
+ 加载器 - 处理less文件
+ 加载器 - 处理图片文件
+ 加载器 - 处理字体文件
+ 加载器 - 处理高版本js语法
+ webpack-dev-server自动刷新
